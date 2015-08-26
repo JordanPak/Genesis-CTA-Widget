@@ -35,12 +35,34 @@ class Genesis_CTA_Widget extends WP_Widget {
     
 	function widget( $args, $instance ) {
         
+        // LOGIC //
+        
+        // Background
+        $bg_style = '';
+        
+        $bg_style .= 'background: ';
+        
+        if ( $instance['bg_url'] != '' )
+            $bg_style .= 'url(\'' . $instance['bg_url'] . '\')';
+        
+        if ( $instance['bg_color'] != '' )
+            $bg_style .= ' ' . $instance['bg_color'];
+        
+        $bg_style .= ' no-repeat';
+        
+        if ( $instance['bg_position'] != '' )
+            $bg_style .= ' ' . $instance['bg_position'];
+        
+        
+        
+        // OUTPUT //
+        
 		echo $args['before_widget']; 
         
-        echo '<div class="gcta-wrap">';
+        echo '<div class="gcta-wrap" style="' . $bg_style . ';">';
         
-            echo $instance['title'];
-            echo $instance['body'];
+            echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
+            echo '<p class="gcta-body">' . $instance['body'] . '</p>';
             echo $instance['button'];
         
         // Close Wrap
