@@ -10,7 +10,7 @@ Author URI: http://JordanPak.com/
 
 
 function jordanpak_register_widgets() {
-	register_widget( 'WPShout_Favorite_Song_Widget');
+	register_widget( 'Genesis_CTA_Widget');
 }
 
 add_action( 'widgets_init', 'jordanpak_register_widgets' );
@@ -110,21 +110,17 @@ class Genesis_CTA_Widget extends WP_Widget {
             $button_icon    = esc_attr( $instance['button_icon'] );
             $button_url     = esc_url( $instance['button_url'] );
             
-                                   
-//          $link = esc_attr($instance['link']);
-//			$songinfo = esc_textarea($instance['songinfo']);
-//            
 		} ?>
-		 
-		<p>
-			<label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link', 'wp_widget_plugin'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('link'); ?>" name="<?php echo $this->get_field_name('link'); ?>" type="text" value="<?php echo $link; ?>" />
-		</p>
-		 
-		<p>
-			<label for="<?php echo $this->get_field_id('songinfo'); ?>"><?php _e('Song Info:', 'wp_widget_plugin'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('songinfo'); ?>" name="<?php echo $this->get_field_name('songinfo'); ?>" type="text" value="<?php echo $songinfo; ?>" />
-		</p>
+		
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('body'); ?>"><?php _e('Body / Subtitle', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('body'); ?>" name="<?php echo $this->get_field_name('body'); ?>" type="text" value="<?php echo $body; ?>" />
+        </p>
 		
 	<?php }    
     
