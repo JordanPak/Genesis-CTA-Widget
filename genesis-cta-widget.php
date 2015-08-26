@@ -37,6 +37,13 @@ class Genesis_CTA_Widget extends WP_Widget {
         
         // LOGIC //
         
+        // Text Align
+        $text_align_style = '';
+        
+        $text_align_style = $instance['text_align'];
+        $text_align_style = 'text-align: ' . $text_align_style . '; ';
+        
+        
         // Background
         $bg_style = '';
         
@@ -55,15 +62,23 @@ class Genesis_CTA_Widget extends WP_Widget {
         
         
         
+        // Button
+        $button = '';
+        $button .= '<a class="gcta-button" href="' . $instance['button_url'] . '">';
+            $button .= '<i class="fa fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+            $button .= $instance['button_text'];
+        $button .= '</a>';
+        
+        
         // OUTPUT //
         
 		echo $args['before_widget']; 
         
-        echo '<div class="gcta-wrap" style="' . $bg_style . ';">';
+        echo '<div class="gcta-wrap" style="' . $text_align_style . $bg_style . ';">';
         
             echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
             echo '<p class="gcta-body">' . $instance['body'] . '</p>';
-            echo $instance['button'];
+            echo $button;
         
         // Close Wrap
         echo '</div>';
@@ -81,8 +96,8 @@ class Genesis_CTA_Widget extends WP_Widget {
 		//-- FIELDS --//
         
         // Text
-        $instance['title']          = strip_tags( $new_instance['title'] );
-        $instance['body']           = strip_tags( $new_instance['body'] );
+        $instance['title']          = $new_instance['title'];
+        $instance['body']           = $new_instance['body'];
         $instance['text_align']     = strip_tags( $new_instance['text_align'] );
         
         // Background
