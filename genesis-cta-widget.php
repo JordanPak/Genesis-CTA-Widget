@@ -32,7 +32,9 @@ class Genesis_CTA_Widget extends WP_Widget {
     } // Genesis_CTA_Widget()
     
     
+    
 	function widget( $args, $instance ) {
+        
 		echo $args['before_widget']; 
         
         echo '<div class="gcta-wrap">';
@@ -47,6 +49,33 @@ class Genesis_CTA_Widget extends WP_Widget {
 		echo $args['after_widget'];
 	
     } // widget()
+    
+    
+    
+	function update( $new_instance, $old_instance ) {
+        
+		$instance = $old_instance;
+        
+		//-- FIELDS --//
+        
+        // Text
+        $instance['title']          = strip_tags( $new_instance['title'] );
+        $instance['body']           = strip_tags( $new_instance['body'] );
+        $instance['text_align']     = strip_tags( $new_instance['text_align'] );
+        
+        // Background
+        $instance['bg_url']         = strip_tags( $new_instance['bg_url'] );
+        $instance['bg_color']       = strip_tags( $new_instance['bg_color'] );
+        $instance['bg_position']    = strip_tags( $new_instance['bg_position'] );
+        
+        // Button
+        $instance['button_text']    = strip_tags( $new_instance['button_text'] );
+        $instance['button_icon']    = strip_tags( $new_instance['button_icon'] );
+        $instance['button_url']     = strip_tags( $new_instance['button_url'] );
+		
+        return $instance;
+        
+	} // update()
     
 
 } // class Genesis_CTA_Widget
