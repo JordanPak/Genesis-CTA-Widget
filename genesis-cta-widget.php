@@ -29,5 +29,21 @@ class Genesis_CTA_Widget extends WP_Widget {
 		);
 	}
     
+    
+	function widget( $args, $instance ) {
+		echo $args['before_widget']; 
+        
+        echo '<div class="gcta-wrap">';
+        
+            echo $args['title'];
+            echo $args['body'];
+            echo $args['button'];
+        
+        // Close Wrap
+        echo '</div>';
+        
+		echo $args['after_widget'];
+	}
+    
 
 } // class Genesis_CTA_Widget
