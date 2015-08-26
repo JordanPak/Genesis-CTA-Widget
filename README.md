@@ -1,7 +1,7 @@
 # Genesis Call To Action Widget
 Call To Action Widget for the Genesis Framework
 
-Supports
+**Supports**
 - Title
 - Body/Sub-Title
 - Text Align
