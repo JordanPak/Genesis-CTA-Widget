@@ -121,6 +121,17 @@ class Genesis_CTA_Widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id('body'); ?>"><?php _e('Body / Subtitle', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('body'); ?>" name="<?php echo $this->get_field_name('body'); ?>" type="text" value="<?php echo $body; ?>" />
         </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('text_align'); ?>"><?php _e('Text Alignment', 'wp_widget_plugin'); ?></label>
+            <select id="<?php echo $this->get_field_id('text_align'); ?>" name="<?php echo $this->get_field_name('text_align'); ?>" value="<?php echo $text_align; ?>">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+            </select>
+        </p>
+
+        <hr>
 		
 	<?php }    
     
