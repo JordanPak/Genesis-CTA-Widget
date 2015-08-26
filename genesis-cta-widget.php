@@ -133,6 +133,21 @@ class Genesis_CTA_Widget extends WP_Widget {
 
         <hr>
 		
+        <p>
+            <label for="<?php echo $this->get_field_id('bg_url'); ?>"><?php _e('Background URL', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('bg_url'); ?>" name="<?php echo $this->get_field_name('bg_url'); ?>" type="text" value="<?php echo $bg_url; ?>" />
+        </p>        
+
+        <p>
+            <label for="<?php echo $this->get_field_id('bg_color'); ?>"><?php _e('BG Color (Ex: #000000)', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('bg_color'); ?>" name="<?php echo $this->get_field_name('bg_color'); ?>" type="text" value="<?php echo $bg_color; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('bg_position'); ?>"><?php _e('CSS Background Position', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('bg_position'); ?>" name="<?php echo $this->get_field_name('bg_position'); ?>" type="text" value="<?php echo $bg_position; ?>" />
+        </p>
+
 	<?php }    
     
 } // class Genesis_CTA_Widget
