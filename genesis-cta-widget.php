@@ -148,6 +148,23 @@ class Genesis_CTA_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('bg_position'); ?>" name="<?php echo $this->get_field_name('bg_position'); ?>" type="text" value="<?php echo $bg_position; ?>" />
         </p>
 
+        <hr>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e('Button Text', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('button_text'); ?>" name="<?php echo $this->get_field_name('button_text'); ?>" type="text" value="<?php echo $button_text; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('button_icon'); ?>"><?php _e('Button Icon (<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_BLANK">FontAwesome</a> class suffix. Ex: "book")', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('button_icon'); ?>" name="<?php echo $this->get_field_name('button_icon'); ?>" type="text" value="<?php echo $button_icon; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('button_url'); ?>"><?php _e('Button URL', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('button_url'); ?>" name="<?php echo $this->get_field_name('button_url'); ?>" type="text" value="<?php echo $button_url; ?>" />
+        </p>
+
 	<?php }    
     
 } // class Genesis_CTA_Widget
