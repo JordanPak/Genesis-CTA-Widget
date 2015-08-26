@@ -76,6 +76,56 @@ class Genesis_CTA_Widget extends WP_Widget {
         return $instance;
         
 	} // update()
-    
 
+
+
+    // Widget form creation
+	function form( $instance ) {
+	 	
+        $title = '';
+        $body = '';
+        $text_align = '';
+        
+        $bg_url = '';
+        $bg_color = '';
+        $bg_position = '';
+        
+        $button_text = '';
+        $button_icon = '';
+        $button_url = '';
+        
+
+		// Check values
+		if( $instance ) {
+			
+            $title          = esc_html( $instance['title'] );
+            $body           = esc_html( $instance['body'] );
+            $text_align     = esc_attr( $instance['text_align'] );
+            
+            $bg_url         = esc_url( $instance['bg_url'] );
+            $bg_color       = esc_attr( $instance['bg_color'] );
+            $bg_position    = esc_attr( $instance['bg_position'] );
+            
+            $button_text    = esc_attr( $instance['button_text'] );
+            $button_icon    = esc_attr( $instance['button_icon'] );
+            $button_url     = esc_url( $instance['button_url'] );
+            
+                                   
+//          $link = esc_attr($instance['link']);
+//			$songinfo = esc_textarea($instance['songinfo']);
+//            
+		} ?>
+		 
+		<p>
+			<label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link', 'wp_widget_plugin'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('link'); ?>" name="<?php echo $this->get_field_name('link'); ?>" type="text" value="<?php echo $link; ?>" />
+		</p>
+		 
+		<p>
+			<label for="<?php echo $this->get_field_id('songinfo'); ?>"><?php _e('Song Info:', 'wp_widget_plugin'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('songinfo'); ?>" name="<?php echo $this->get_field_name('songinfo'); ?>" type="text" value="<?php echo $songinfo; ?>" />
+		</p>
+		
+	<?php }    
+    
 } // class Genesis_CTA_Widget
