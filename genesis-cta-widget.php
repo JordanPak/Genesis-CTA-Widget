@@ -39,9 +39,9 @@ class Genesis_CTA_Widget extends WP_Widget {
         
         echo '<div class="gcta-wrap">';
         
-            echo $args['title'];
-            echo $args['body'];
-            echo $args['button'];
+            echo $instance['title'];
+            echo $instance['body'];
+            echo $instance['button'];
         
         // Close Wrap
         echo '</div>';
@@ -131,7 +131,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             </select>
         </p>
 
-        <hr>
+        <hr class="div">
 		
         <p>
             <label for="<?php echo $this->get_field_id('bg_url'); ?>"><?php _e('Background URL', 'wp_widget_plugin'); ?></label>
@@ -148,7 +148,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('bg_position'); ?>" name="<?php echo $this->get_field_name('bg_position'); ?>" type="text" value="<?php echo $bg_position; ?>" />
         </p>
 
-        <hr>
+        <hr class="div">
 
         <p>
             <label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e('Button Text', 'wp_widget_plugin'); ?></label>
