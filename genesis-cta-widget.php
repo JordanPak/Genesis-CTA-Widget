@@ -64,7 +64,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         
         // Button
         $button = '';
-        $button .= '<a class="gcta-button" href="' . $instance['button_url'] . '">';
+        $button .= '<a class="gcta-button" href="' . esc_url($instance['button_url']) . '">';
         if ( $instance['button_icon'] != '' )
             $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
             $button .= $instance['button_text'];
