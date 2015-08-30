@@ -6,21 +6,23 @@
 
 .gcta-wrap {
     padding: 100px;
-    padding-bottom: 150px;
+    margin-bottom: 40px;
 }
 
 .gcta-wrap .widget-title {
     font-size: 48px;
+    font-weight: normal;
     font-weight: 300;
     margin-bottom: 12px;
 }
 
 .gcta-wrap .widget-title strong {
-    font-weight: 700;
-    border-bottom: 2px solid;
+    font-weight: bold;
+    border-bottom: 2px solid #e5554e;
 }
 
 .gcta-wrap .gcta-body {
+    font-weight: normal;
     font-weight: 300;
     font-size: 32px;
     line-height: 32px;
@@ -28,6 +30,7 @@
 }
 
 .gcta-wrap .gcta-body strong {
+    font-weight: bold;
     font-weight: 700;
     font-size: .75em;
 }
@@ -45,6 +48,6 @@
 }
 
 .gcta-wrap .gcta-button:hover {
-    background: #333;
+    background: #e5554e;
     color: #FFFFFF;
 }
