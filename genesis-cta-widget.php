@@ -71,11 +71,20 @@ class Genesis_CTA_Widget extends WP_Widget {
         $button .= '</a>';
         
         
+        // Wrapper classes
+        $wrapper_classes = '';
+        $wrapper_classes .= 'widget gcta-wrap';
+        
+        if ( $instance['theme'] == 'dark' )
+            $wrapper_classes .= ' gcta-theme-dark';
+        
+        
+        
         // OUTPUT //
         
 		echo $args['before_widget']; 
         
-        echo '<section class="widget gcta-wrap" style="' . $text_align_style . $bg_style . ';">';
+        echo '<section class="' . $wrapper_classes . '" style="' . $text_align_style . $bg_style . ';">';
         
             echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
             echo '<p class="gcta-body">' . $instance['body'] . '</p>';
@@ -102,6 +111,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         $instance['text_align']     = strip_tags( $new_instance['text_align'] );
         
         // Background
+        $instance['theme']          = strip_tags( $new_instance['theme'] );
         $instance['bg_url']         = strip_tags( $new_instance['bg_url'] );
         $instance['bg_color']       = strip_tags( $new_instance['bg_color'] );
         $instance['bg_position']    = strip_tags( $new_instance['bg_position'] );
@@ -124,6 +134,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         $body = '';
         $text_align = '';
         
+        $theme = '';
         $bg_url = '';
         $bg_color = '';
         $bg_position = '';
@@ -140,6 +151,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             $body           = esc_html( $instance['body'] );
             $text_align     = esc_attr( $instance['text_align'] );
             
+            $theme          = esc_attr( $instance['theme'] );
             $bg_url         = esc_url( $instance['bg_url'] );
             $bg_color       = esc_attr( $instance['bg_color'] );
             $bg_position    = esc_attr( $instance['bg_position'] );
@@ -162,15 +174,59 @@ class Genesis_CTA_Widget extends WP_Widget {
 
         <p>
             <label for="<?php echo $this->get_field_id('text_align'); ?>"><?php _e('Text Alignment', 'wp_widget_plugin'); ?></label>
-            <select id="<?php echo $this->get_field_id('text_align'); ?>" name="<?php echo $this->get_field_name('text_align'); ?>" value="<?php echo $text_align; ?>">
-                <option value="left">Left</option>
-                <option value="center">Center</option>
-                <option value="right">Right</option>
+            <select id="<?php echo $this->get_field_id('text_align'); ?>" name="<?php echo $this->get_field_name('text_align'); ?>">
+                
+                <?php
+        
+                $text_align_options = array(
+                    "left" => "Left",
+                    "center" => "Center",
+                    "right" => "Right"
+                );
+        
+                foreach( $text_align_options as $value=>$label ) {
+                    
+                    if ( $text_align == $value )
+                        echo '<option selected value="' . $value . '">' . $label . '</option>';
+                    
+                    else
+                        echo '<option value="' . $value . '">' . $label . '</option>';
+                    
+                } // foreach
+        
+                ?>
+                
             </select>
         </p>
 
         <hr class="div">
-		
+    
+        <p>
+            <label for="<?php echo $this->get_field_id('theme'); ?>"><?php _e('Theme', 'wp_widget_plugin'); ?></label>
+            <select id="<?php echo $this->get_field_id('theme'); ?>" name="<?php echo $this->get_field_name('theme'); ?>">
+                
+                <?php
+        
+                $theme_options = array(
+                    "light" => "Light",
+                    "dark" => "Dark",
+                );
+        
+                foreach( $theme_options as $value=>$label ) {
+                    
+                    if ( $theme == $value )
+                        echo '<option selected value="' . $value . '">' . $label . '</option>';
+                    
+                    else
+                        echo '<option value="' . $value . '">' . $label . '</option>';
+                    
+                } // foreach
+        
+                ?>
+                
+            </select>
+        </p>  
+
         <p>
             <label for="<?php echo $this->get_field_id('bg_url'); ?>"><?php _e('Background URL', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('bg_url'); ?>" name="<?php echo $this->get_field_name('bg_url'); ?>" type="text" value="<?php echo $bg_url; ?>" />
