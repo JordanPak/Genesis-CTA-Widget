@@ -74,14 +74,14 @@ class Genesis_CTA_Widget extends WP_Widget {
         
 		echo $args['before_widget']; 
         
-        echo '<div class="gcta-wrap" style="' . $text_align_style . $bg_style . ';">';
+        echo '<section class="widget gcta-wrap" style="' . $text_align_style . $bg_style . ';">';
         
-            echo '<h3 class="widget-title">' . $instance['title'] . '</h3>';
+            echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
             echo '<p class="gcta-body">' . $instance['body'] . '</p>';
             echo $button;
         
         // Close Wrap
-        echo '</div>';
+        echo '</section>';
         
 		echo $args['after_widget'];
 	
