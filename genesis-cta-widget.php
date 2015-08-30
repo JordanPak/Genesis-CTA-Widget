@@ -25,8 +25,8 @@ class Genesis_CTA_Widget extends WP_Widget {
 		// Instantiate the parent object
 		parent::__construct(
 	            'genesis_cta_widget', // Base ID
-        	    __('Genesis Call To Action Widget', 'text_domain'), // Name
- 	           array( 'description' => __( 'Call To Action Widget with text, background image, alignment, and button icon support for the Genesis Framework.', 'text_domain' ), ) // Args
+        	    __('Genesis - Call To Action', 'text_domain'), // Name
+ 	           array( 'description' => __( 'Call to action with text, background, and button.', 'text_domain' ), ) // Args
 		);
 	
     } // Genesis_CTA_Widget()
