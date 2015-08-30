@@ -64,3 +64,33 @@
     color: #000000;
     background: #FFFFFF;
 }
+
+
+@media only screen and (max-width: 960px) {
+   
+    .gcta-wrap {
+        padding: 60px;   
+    }
+    
+}
+
+@media only screen and (max-width: 500px) {
+   
+    .gcta-wrap {
+        padding: 40px;   
+    }
+    
+    .gcta-wrap .widget-title {
+        font-size: 42px;
+    }
+    
+    .gcta-wrap .gcta-body {
+        font-size: 24px;   
+    }
+    
+    .gcta-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+}
