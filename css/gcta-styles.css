@@ -60,6 +60,7 @@
 }
 
 .gcta-wrap.gcta-theme-dark .gcta-button:hover {
+    border-color: #FFFFFF;
     color: #000000;
     background: #FFFFFF;
 }
