@@ -205,3 +205,15 @@ class Genesis_CTA_Widget extends WP_Widget {
 	<?php }    
     
 } // class Genesis_CTA_Widget
+
+
+
+
+// WIDGET STYLES
+add_action( 'wp_enqueue_scripts', 'gcta_styles' );
+function gcta_styles() {
+    
+    wp_enqueue_style( 'gcta', plugins_url() . '/genesis-cta-widget/css/gcta-styles.css', array() );
+    
+} // renaromano_global_styles()
+
