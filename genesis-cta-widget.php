@@ -258,6 +258,10 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 		} ?>
 
+		<p>
+			<b>TITLE &amp; SUBTITLE</b>
+		</p>
+
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
@@ -295,7 +299,11 @@ class Genesis_CTA_Widget extends WP_Widget {
             </select>
         </p>
 
-        <hr class="div">
+        <br>
+
+		<p>
+			<b>STYLING</b>
+		</p>
 
         <p>
             <label for="<?php echo $this->get_field_id('theme'); ?>"><?php _e('Theme', 'wp_widget_plugin'); ?></label>
@@ -338,7 +346,11 @@ class Genesis_CTA_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('bg_position'); ?>" name="<?php echo $this->get_field_name('bg_position'); ?>" type="text" value="<?php echo $bg_position; ?>" />
         </p>
 
-        <hr class="div">
+        <br>
+
+		<p>
+			<b>BUTTON</b>
+		</p>
 
         <p>
             <label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e('Button Text', 'wp_widget_plugin'); ?></label>
@@ -360,7 +372,11 @@ class Genesis_CTA_Widget extends WP_Widget {
 		    <label for="<?php echo $this->get_field_id('button_newtab'); ?>">Open Link in New Tab</label>
 		</p>
 
-		<hr class="div">
+		<br>
+
+		<p>
+			<b>VIDEO EMBED</b>
+		</p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id('video_float'); ?>"><?php _e('Video Embed Float', 'wp_widget_plugin'); ?></label>
