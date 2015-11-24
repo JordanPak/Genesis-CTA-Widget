@@ -98,9 +98,17 @@ class Genesis_CTA_Widget extends WP_Widget {
 
         echo '<section class="' . $wrapper_classes . '" style="' . $text_align_style . $bg_style . ';">';
 
-            echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
-            echo '<p class="gcta-body">' . $instance['body'] . '</p>';
-            echo $button;
+			if ( $instance['title'] ) {
+				echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
+			}
+
+			if ( $instance['body'] ) {
+				echo '<p class="gcta-body">' . $instance['body'] . '</p>';
+			}
+
+			if ( $instance['button'] !== '' ) {
+            	echo $button;
+			}
 
         // Close Wrap
         echo '</section>';
