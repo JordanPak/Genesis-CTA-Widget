@@ -93,6 +93,33 @@ class Genesis_CTA_Widget extends WP_Widget {
 		} // if button_text
 
 
+		// VIDEO EMBED //
+		$video = '';
+		$video_float = $instance['video_float'];
+
+		if ( $instance['youtube_id'] ) {
+
+			// Set Classes
+			$video_classes = 'gcta-video';
+
+			if ( $video_float ) {
+				$video_classes .= ' gcta-video-' . $video_float;
+			}
+
+			// Output Video Embed
+			$video .= '<div class="' . $video_classes .'">';
+
+				// YouTube
+				if ( $instance['youtube_id'] ) {
+
+					$video .= '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+
+				} // if youtube_id
+
+			$video .= '</div>';
+
+		} // if there's ANY embed
+
         // WRAPPER CLASSES //
         $wrapper_classes = '';
         $wrapper_classes .= 'widget gcta-wrap';
@@ -107,6 +134,10 @@ class Genesis_CTA_Widget extends WP_Widget {
 		echo $args['before_widget'];
 
         echo '<section class="' . $wrapper_classes . '" style="' . $text_align_style . $bg_style . ';">';
+
+			if ( $video ) {
+				echo $video;
+			}
 
 			if ( $instance['title'] ) {
 				echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
