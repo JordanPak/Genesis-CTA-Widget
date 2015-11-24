@@ -9,6 +9,14 @@
     margin-bottom: 40px;
 }
 
+.gcta-video-left {
+	float: left;
+}
+
+.gcta-video-right {
+	float: right;
+}
+
 .gcta-wrap .widget-title {
     font-size: 48px;
     font-weight: normal;
@@ -67,30 +75,30 @@
 
 
 @media only screen and (max-width: 960px) {
-   
+
     .gcta-wrap {
-        padding: 60px;   
+        padding: 60px;
     }
-    
+
 }
 
 @media only screen and (max-width: 500px) {
-   
+
     .gcta-wrap {
-        padding: 40px;   
+        padding: 40px;
     }
-    
+
     .gcta-wrap .widget-title {
         font-size: 42px;
     }
-    
+
     .gcta-wrap .gcta-body {
-        font-size: 24px;   
+        font-size: 24px;
     }
-    
+
     .gcta-button {
         width: 100%;
         text-align: center;
     }
-    
+
 }

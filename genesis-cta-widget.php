@@ -16,10 +16,11 @@ function jordanpak_register_widgets() {
 add_action( 'widgets_init', 'jordanpak_register_widgets' );
 
 
-
+//-- WIDGET CLASS --//
 class Genesis_CTA_Widget extends WP_Widget {
 
 
+	//-- CONSTRUCTOR --//
     function Genesis_CTA_Widget() {
 
 		// Instantiate the parent object
@@ -32,61 +33,116 @@ class Genesis_CTA_Widget extends WP_Widget {
     } // Genesis_CTA_Widget()
 
 
-
+	//-- DISPLAY THE WIDGET --//
 	function widget( $args, $instance ) {
 
-        // LOGIC //
-
-        // Text Align
+        // TEXT ALIGN //
         $text_align_style = '';
 
         $text_align_style = $instance['text_align'];
         $text_align_style = 'text-align: ' . $text_align_style . '; ';
 
 
-        // Background
+        // BACKGROUND //
         $bg_style = '';
 
         $bg_style .= 'background: ';
 
-        if ( $instance['bg_url'] != '' )
+        if ( $instance['bg_url'] != '' ) {
             $bg_style .= 'url(\'' . $instance['bg_url'] . '\')';
+		}
 
-        if ( $instance['bg_color'] != '' )
+        if ( $instance['bg_color'] != '' ) {
             $bg_style .= ' ' . $instance['bg_color'];
+		}
 
         $bg_style .= ' no-repeat';
 
-        if ( $instance['bg_position'] != '' )
+        if ( $instance['bg_position'] != '' ) {
             $bg_style .= ' ' . $instance['bg_position'];
-
-
-
-        // Button
-        $button = '';
-
-		if ( $instance['button_newtab'] == true ) {
-			$button_target = 'target="_BLANK"';
 		}
 
-		else {
-			$button_target = '';
-		}
+		// BUTTON //
+		if( $instance['button_text'] ) {
 
-        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
-        if ( $instance['button_icon'] != '' )
-            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
-            $button .= $instance['button_text'];
-        $button .= '</a>';
+	        // Button
+	        $button = '';
+
+			if ( $instance['button_newtab'] == true ) {
+				$button_target = 'target="_BLANK"';
+			}
+
+			else {
+				$button_target = '';
+			}
+
+			// Start Button
+	        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
+
+				// Config Icon
+		        if ( $instance['button_icon'] != '' ) {
+		            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+				}
+
+				// Set Text
+				$button .= $instance['button_text'];
+
+			// Close Button
+	        $button .= '</a>';
+
+		} // if button_text
 
 
-        // Wrapper classes
+		// VIDEO EMBED //
+		$video = '';
+		$video_float = $instance['video_float'];
+
+		if ( $instance['youtube_id'] ) {
+
+			// Width
+			if ( $instance['video_width'] ) {
+				$video_width = $instance['video_width'];
+			} else {
+				$video_width = '400';
+			}
+
+			// Height
+			if ( $instance['video_height'] ) {
+				$video_height = $instance['video_height'];
+			} else {
+				$video_height = '224';
+			}
+
+
+			// Set Classes
+			$video_classes = 'gcta-video';
+
+			if ( $video_float ) {
+				$video_classes .= ' gcta-video-' . $video_float;
+			}
+
+
+			// Output Video Embed
+			$video .= '<div class="' . $video_classes .'">';
+
+				// YouTube
+				if ( $instance['youtube_id'] ) {
+
+					$video .= '<iframe width="'. $video_width . '" height="' . $video_height . '" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+
+				} // if youtube_id
+
+			$video .= '</div>';
+
+		} // if there's ANY embed
+
+        // WRAPPER CLASSES //
         $wrapper_classes = '';
         $wrapper_classes .= 'widget gcta-wrap';
 
-        if ( $instance['theme'] == 'dark' )
+        if ( $instance['theme'] == 'dark' ) {
             $wrapper_classes .= ' gcta-theme-dark';
-
+		}
 
 
         // OUTPUT //
@@ -95,9 +151,21 @@ class Genesis_CTA_Widget extends WP_Widget {
 
         echo '<section class="' . $wrapper_classes . '" style="' . $text_align_style . $bg_style . ';">';
 
-            echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
-            echo '<p class="gcta-body">' . $instance['body'] . '</p>';
-            echo $button;
+			if ( $video ) {
+				echo $video;
+			}
+
+			if ( $instance['title'] ) {
+				echo '<h3 class="widget-title widgettitle">' . $instance['title'] . '</h3>';
+			}
+
+			if ( $instance['body'] ) {
+				echo '<p class="gcta-body">' . $instance['body'] . '</p>';
+			}
+
+			if ( $instance['button'] !== '' ) {
+            	echo $button;
+			}
 
         // Close Wrap
         echo '</section>';
@@ -131,6 +199,12 @@ class Genesis_CTA_Widget extends WP_Widget {
         $instance['button_url']     = strip_tags( $new_instance['button_url'] );
 		$instance['button_newtab']	= strip_tags( $new_instance['button_newtab']);
 
+		// Video
+		$instance['video_float']	= strip_tags( $new_instance['video_float'] );
+		$instance['video_width']	= strip_tags( $new_instance['video_width'] );
+		$instance['video_height']	= strip_tags( $new_instance['video_height'] );
+		$instance['youtube_id']		= strip_tags( $new_instance['youtube_id'] );
+
         return $instance;
 
 	} // update()
@@ -154,6 +228,11 @@ class Genesis_CTA_Widget extends WP_Widget {
         $button_url = '';
 		$button_newtab = '';
 
+		$video_float = '';
+		$video_width = '';
+		$video_height = '';
+		$youtube_id = '';
+
 
 		// Check values
 		if( $instance ) {
@@ -170,9 +249,18 @@ class Genesis_CTA_Widget extends WP_Widget {
             $button_text    = esc_attr( $instance['button_text'] );
             $button_icon    = esc_attr( $instance['button_icon'] );
             $button_url     = esc_url( $instance['button_url'] );
-			$button_newtab	= esc_attr( $instance['button_newtab']);
+			$button_newtab	= esc_attr( $instance['button_newtab'] );
+
+			$video_float	= esc_attr( $instance['video_float'] );
+			$video_width	= esc_attr( $instance['video_width'] );
+			$video_height	= esc_attr( $instance['video_height'] );
+			$youtube_id		= esc_attr( $instance['youtube_id'] );
 
 		} ?>
+
+		<p>
+			<b>TITLE &amp; SUBTITLE</b>
+		</p>
 
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'wp_widget_plugin'); ?></label>
@@ -211,7 +299,11 @@ class Genesis_CTA_Widget extends WP_Widget {
             </select>
         </p>
 
-        <hr class="div">
+        <br>
+
+		<p>
+			<b>STYLING</b>
+		</p>
 
         <p>
             <label for="<?php echo $this->get_field_id('theme'); ?>"><?php _e('Theme', 'wp_widget_plugin'); ?></label>
@@ -254,7 +346,11 @@ class Genesis_CTA_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('bg_position'); ?>" name="<?php echo $this->get_field_name('bg_position'); ?>" type="text" value="<?php echo $bg_position; ?>" />
         </p>
 
-        <hr class="div">
+        <br>
+
+		<p>
+			<b>BUTTON</b>
+		</p>
 
         <p>
             <label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e('Button Text', 'wp_widget_plugin'); ?></label>
@@ -275,6 +371,54 @@ class Genesis_CTA_Widget extends WP_Widget {
 		    <input class="checkbox" type="checkbox" <?php checked($instance['button_newtab'], 'on'); ?> id="<?php echo $this->get_field_id('button_newtab'); ?>" name="<?php echo $this->get_field_name('button_newtab'); ?>" />
 		    <label for="<?php echo $this->get_field_id('button_newtab'); ?>">Open Link in New Tab</label>
 		</p>
+
+		<br>
+
+		<p>
+			<b>VIDEO EMBED</b>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('video_float'); ?>"><?php _e('Video Embed Float', 'wp_widget_plugin'); ?></label>
+			<select id="<?php echo $this->get_field_id('video_float'); ?>" name="<?php echo $this->get_field_name('video_float'); ?>">
+
+				<?php
+
+				$video_float_options = array(
+					"left" => "Left",
+					"right" => "Right",
+					"none" => "None"
+				);
+
+				foreach( $video_float_options as $value=>$label ) {
+
+					if ( $video_float == $value )
+						echo '<option selected value="' . $value . '">' . $label . '</option>';
+
+					else
+						echo '<option value="' . $value . '">' . $label . '</option>';
+
+				} // foreach
+
+				?>
+
+			</select>
+		</p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('video_width'); ?>"><?php _e('Video Embed Width', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('video_width'); ?>" name="<?php echo $this->get_field_name('video_width'); ?>" type="text" value="<?php echo $video_width; ?>" />
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('video_height'); ?>"><?php _e('Video Embed Height', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('video_height'); ?>" name="<?php echo $this->get_field_name('video_height'); ?>" type="text" value="<?php echo $video_height; ?>" />
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('youtube_id'); ?>"><?php _e('YouTube Video ID', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" type="text" value="<?php echo $youtube_id; ?>" />
+        </p>
 
 	<?php }
 
