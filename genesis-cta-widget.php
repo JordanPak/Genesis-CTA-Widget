@@ -143,6 +143,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 		$instance['button_newtab']	= strip_tags( $new_instance['button_newtab']);
 
 		// Video
+		$instance['video_float']	= strip_tags( $new_instance['video_float'] );
 		$instance['youtube_id']		= strip_tags( $new_instance['youtube_id'] );
 
         return $instance;
@@ -188,6 +189,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             $button_url     = esc_url( $instance['button_url'] );
 			$button_newtab	= esc_attr( $instance['button_newtab'] );
 
+			$video_float	= esc_attr( $instance['video_float'] );
 			$youtube_id		= esc_attr( $instance['youtube_id'] );
 
 		} ?>
@@ -295,6 +297,33 @@ class Genesis_CTA_Widget extends WP_Widget {
 		</p>
 
 		<hr class="div">
+
+		<p>
+			<label for="<?php echo $this->get_field_id('video_float'); ?>"><?php _e('Video Embed Float', 'wp_widget_plugin'); ?></label>
+			<select id="<?php echo $this->get_field_id('video_float'); ?>" name="<?php echo $this->get_field_name('video_float'); ?>">
+
+				<?php
+
+				$video_float_options = array(
+					"left" => "Left",
+					"right" => "Right",
+					"none" => "None"
+				);
+
+				foreach( $video_float_options as $value=>$label ) {
+
+					if ( $video_float == $value )
+						echo '<option selected value="' . $value . '">' . $label . '</option>';
+
+					else
+						echo '<option value="' . $value . '">' . $label . '</option>';
+
+				} // foreach
+
+				?>
+
+			</select>
+		</p>
 
 		<p>
             <label for="<?php echo $this->get_field_id('youtube_id'); ?>"><?php _e('YouTube Video ID', 'wp_widget_plugin'); ?></label>
