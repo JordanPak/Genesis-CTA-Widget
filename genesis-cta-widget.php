@@ -61,23 +61,26 @@ class Genesis_CTA_Widget extends WP_Widget {
             $bg_style .= ' ' . $instance['bg_position'];
 
 
+		if( $instance['button_text'] ) {
 
-        // Button
-        $button = '';
+	        // Button
+	        $button = '';
 
-		if ( $instance['button_newtab'] == true ) {
-			$button_target = 'target="_BLANK"';
-		}
+			if ( $instance['button_newtab'] == true ) {
+				$button_target = 'target="_BLANK"';
+			}
 
-		else {
-			$button_target = '';
-		}
+			else {
+				$button_target = '';
+			}
 
-        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
-        if ( $instance['button_icon'] != '' )
-            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
-            $button .= $instance['button_text'];
-        $button .= '</a>';
+	        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
+	        if ( $instance['button_icon'] != '' )
+	            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+	            $button .= $instance['button_text'];
+	        $button .= '</a>';
+
+		} // if button_text
 
 
         // Wrapper classes
