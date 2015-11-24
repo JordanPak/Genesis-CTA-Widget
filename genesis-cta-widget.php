@@ -99,6 +99,21 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 		if ( $instance['youtube_id'] ) {
 
+			// Width
+			if ( $instance['video_width'] ) {
+				$video_width = $instance['video_width'];
+			} else {
+				$video_width = '400';
+			}
+
+			// Height
+			if ( $instance['video_height'] ) {
+				$video_height = $instance['video_height'];
+			} else {
+				$video_height = '224';
+			}
+
+
 			// Set Classes
 			$video_classes = 'gcta-video';
 
@@ -106,13 +121,14 @@ class Genesis_CTA_Widget extends WP_Widget {
 				$video_classes .= ' gcta-video-' . $video_float;
 			}
 
+
 			// Output Video Embed
 			$video .= '<div class="' . $video_classes .'">';
 
 				// YouTube
 				if ( $instance['youtube_id'] ) {
 
-					$video .= '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+					$video .= '<iframe width="'. $video_width . '" height="' . $video_height . '" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 
 				} // if youtube_id
 
@@ -185,6 +201,8 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 		// Video
 		$instance['video_float']	= strip_tags( $new_instance['video_float'] );
+		$instance['video_width']	= strip_tags( $new_instance['video_width'] );
+		$instance['video_height']	= strip_tags( $new_instance['video_height'] );
 		$instance['youtube_id']		= strip_tags( $new_instance['youtube_id'] );
 
         return $instance;
@@ -210,6 +228,9 @@ class Genesis_CTA_Widget extends WP_Widget {
         $button_url = '';
 		$button_newtab = '';
 
+		$video_float = '';
+		$video_width = '';
+		$video_height = '';
 		$youtube_id = '';
 
 
@@ -231,6 +252,8 @@ class Genesis_CTA_Widget extends WP_Widget {
 			$button_newtab	= esc_attr( $instance['button_newtab'] );
 
 			$video_float	= esc_attr( $instance['video_float'] );
+			$video_width	= esc_attr( $instance['video_width'] );
+			$video_height	= esc_attr( $instance['video_height'] );
 			$youtube_id		= esc_attr( $instance['youtube_id'] );
 
 		} ?>
@@ -365,6 +388,16 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 			</select>
 		</p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('video_width'); ?>"><?php _e('Video Embed Width', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('video_width'); ?>" name="<?php echo $this->get_field_name('video_width'); ?>" type="text" value="<?php echo $video_width; ?>" />
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('video_height'); ?>"><?php _e('Video Embed Height', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('video_height'); ?>" name="<?php echo $this->get_field_name('video_height'); ?>" type="text" value="<?php echo $video_height; ?>" />
+        </p>
 
 		<p>
             <label for="<?php echo $this->get_field_id('youtube_id'); ?>"><?php _e('YouTube Video ID', 'wp_widget_plugin'); ?></label>
