@@ -48,17 +48,19 @@ class Genesis_CTA_Widget extends WP_Widget {
 
         $bg_style .= 'background: ';
 
-        if ( $instance['bg_url'] != '' )
+        if ( $instance['bg_url'] != '' ) {
             $bg_style .= 'url(\'' . $instance['bg_url'] . '\')';
+		}
 
-        if ( $instance['bg_color'] != '' )
+        if ( $instance['bg_color'] != '' ) {
             $bg_style .= ' ' . $instance['bg_color'];
+		}
 
         $bg_style .= ' no-repeat';
 
-        if ( $instance['bg_position'] != '' )
+        if ( $instance['bg_position'] != '' ) {
             $bg_style .= ' ' . $instance['bg_position'];
-
+		}
 
 		// BUTTON //
 		if( $instance['button_text'] ) {
