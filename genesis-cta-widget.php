@@ -74,10 +74,18 @@ class Genesis_CTA_Widget extends WP_Widget {
 				$button_target = '';
 			}
 
+			// Start Button
 	        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
-	        if ( $instance['button_icon'] != '' )
-	            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
-	            $button .= $instance['button_text'];
+
+				// Config Icon
+		        if ( $instance['button_icon'] != '' ) {
+		            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+				}
+
+				// Set Text
+				$button .= $instance['button_text'];
+
+			// Close Button
 	        $button .= '</a>';
 
 		} // if button_text
@@ -87,9 +95,9 @@ class Genesis_CTA_Widget extends WP_Widget {
         $wrapper_classes = '';
         $wrapper_classes .= 'widget gcta-wrap';
 
-        if ( $instance['theme'] == 'dark' )
+        if ( $instance['theme'] == 'dark' ) {
             $wrapper_classes .= ' gcta-theme-dark';
-
+		}
 
 
         // OUTPUT //
