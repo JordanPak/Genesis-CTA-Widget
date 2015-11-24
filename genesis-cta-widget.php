@@ -16,10 +16,11 @@ function jordanpak_register_widgets() {
 add_action( 'widgets_init', 'jordanpak_register_widgets' );
 
 
-
+//-- WIDGET CLASS --//
 class Genesis_CTA_Widget extends WP_Widget {
 
 
+	//-- CONSTRUCTOR --//
     function Genesis_CTA_Widget() {
 
 		// Instantiate the parent object
@@ -32,19 +33,17 @@ class Genesis_CTA_Widget extends WP_Widget {
     } // Genesis_CTA_Widget()
 
 
-
+	//-- DISPLAY THE WIDGET --//
 	function widget( $args, $instance ) {
 
-        // LOGIC //
-
-        // Text Align
+        // TEXT ALIGN //
         $text_align_style = '';
 
         $text_align_style = $instance['text_align'];
         $text_align_style = 'text-align: ' . $text_align_style . '; ';
 
 
-        // Background
+        // BACKGROUND //
         $bg_style = '';
 
         $bg_style .= 'background: ';
@@ -61,6 +60,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             $bg_style .= ' ' . $instance['bg_position'];
 
 
+		// BUTTON //
 		if( $instance['button_text'] ) {
 
 	        // Button
@@ -83,7 +83,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 		} // if button_text
 
 
-        // Wrapper classes
+        // WRAPPER CLASSES //
         $wrapper_classes = '';
         $wrapper_classes .= 'widget gcta-wrap';
 
