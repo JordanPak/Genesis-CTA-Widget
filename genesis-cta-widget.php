@@ -134,6 +134,9 @@ class Genesis_CTA_Widget extends WP_Widget {
         $instance['button_url']     = strip_tags( $new_instance['button_url'] );
 		$instance['button_newtab']	= strip_tags( $new_instance['button_newtab']);
 
+		// Video
+		$instance['youtube_id']		= strip_tags( $new_instance['youtube_id'] );
+
         return $instance;
 
 	} // update()
@@ -157,6 +160,8 @@ class Genesis_CTA_Widget extends WP_Widget {
         $button_url = '';
 		$button_newtab = '';
 
+		$youtube_id = '';
+
 
 		// Check values
 		if( $instance ) {
@@ -173,7 +178,9 @@ class Genesis_CTA_Widget extends WP_Widget {
             $button_text    = esc_attr( $instance['button_text'] );
             $button_icon    = esc_attr( $instance['button_icon'] );
             $button_url     = esc_url( $instance['button_url'] );
-			$button_newtab	= esc_attr( $instance['button_newtab']);
+			$button_newtab	= esc_attr( $instance['button_newtab'] );
+
+			$youtube_id		= esc_attr( $instance['youtube_id'] );
 
 		} ?>
 
@@ -278,6 +285,13 @@ class Genesis_CTA_Widget extends WP_Widget {
 		    <input class="checkbox" type="checkbox" <?php checked($instance['button_newtab'], 'on'); ?> id="<?php echo $this->get_field_id('button_newtab'); ?>" name="<?php echo $this->get_field_name('button_newtab'); ?>" />
 		    <label for="<?php echo $this->get_field_id('button_newtab'); ?>">Open Link in New Tab</label>
 		</p>
+
+		<hr class="div">
+
+		<p>
+            <label for="<?php echo $this->get_field_id('youtube_id'); ?>"><?php _e('YouTube Video ID', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" type="text" value="<?php echo $youtube_id; ?>" />
+        </p>
 
 	<?php }
 
