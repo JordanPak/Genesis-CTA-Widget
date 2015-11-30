@@ -192,6 +192,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         $instance['bg_url']         = strip_tags( $new_instance['bg_url'] );
         $instance['bg_color']       = strip_tags( $new_instance['bg_color'] );
         $instance['bg_position']    = strip_tags( $new_instance['bg_position'] );
+		$instance['bg_size']		= strip_tags( $new_instance['bg_size'] );
 
         // Button
         $instance['button_text']    = strip_tags( $new_instance['button_text'] );
@@ -222,6 +223,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         $bg_url = '';
         $bg_color = '';
         $bg_position = '';
+		$bg_size = '';
 
         $button_text = '';
         $button_icon = '';
@@ -245,6 +247,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             $bg_url         = esc_url( $instance['bg_url'] );
             $bg_color       = esc_attr( $instance['bg_color'] );
             $bg_position    = esc_attr( $instance['bg_position'] );
+			$bg_size		= esc_attr( $instance['bg_size'] );
 
             $button_text    = esc_attr( $instance['button_text'] );
             $button_icon    = esc_attr( $instance['button_icon'] );
@@ -344,6 +347,33 @@ class Genesis_CTA_Widget extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id('bg_position'); ?>"><?php _e('CSS Background Position', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('bg_position'); ?>" name="<?php echo $this->get_field_name('bg_position'); ?>" type="text" value="<?php echo $bg_position; ?>" />
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('bg_size'); ?>"><?php _e('Background Size', 'wp_widget_plugin'); ?></label>
+            <select id="<?php echo $this->get_field_id('bg_size'); ?>" name="<?php echo $this->get_field_name('bg_size'); ?>">
+
+                <?php
+
+                $bg_size_options = array(
+                    "contain" => "contain",
+                    "cover" => "cover",
+					"100%" => "100%"
+                );
+
+                foreach( $bg_size_options as $value=>$label ) {
+
+                    if ( $bg_size == $value )
+                        echo '<option selected value="' . $value . '">' . $label . '</option>';
+
+                    else
+                        echo '<option value="' . $value . '">' . $label . '</option>';
+
+                } // foreach
+
+                ?>
+
+            </select>
         </p>
 
         <br>
