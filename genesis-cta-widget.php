@@ -44,9 +44,9 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 
         // BACKGROUND //
-        $bg_style = '';
+        $bg_style = 'background: ';
+		$bg_size_style = 'background-size: ';
 
-        $bg_style .= 'background: ';
 
         if ( $instance['bg_url'] != '' ) {
             $bg_style .= 'url(\'' . $instance['bg_url'] . '\')';
@@ -60,6 +60,12 @@ class Genesis_CTA_Widget extends WP_Widget {
 
         if ( $instance['bg_position'] != '' ) {
             $bg_style .= ' ' . $instance['bg_position'];
+		}
+
+		$bg_style .= '; ';
+
+		if ( $instance['bg_size'] != '' ) {
+			$bg_size_style .= $instance['bg_size'];
 		}
 
 		// BUTTON //
@@ -149,7 +155,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 		echo $args['before_widget'];
 
-        echo '<section class="' . $wrapper_classes . '" style="' . $text_align_style . $bg_style . ';">';
+        echo '<section class="' . $wrapper_classes . '" style="' . $text_align_style . $bg_style . $bg_size_style . ';">';
 
 			if ( $video ) {
 				echo $video;
@@ -356,9 +362,10 @@ class Genesis_CTA_Widget extends WP_Widget {
                 <?php
 
                 $bg_size_options = array(
-                    "contain" => "contain",
-                    "cover" => "cover",
-					"100%" => "100%"
+					"auto"			=>	"auto",
+                    "contain" 		=>	"contain",
+                    "cover"			=>	"cover",
+					"100%"	=>	"100%"
                 );
 
                 foreach( $bg_size_options as $value=>$label ) {
