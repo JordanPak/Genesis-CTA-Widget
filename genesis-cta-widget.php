@@ -475,6 +475,14 @@ class Genesis_CTA_Widget extends WP_Widget {
 add_action( 'wp_enqueue_scripts', 'gcta_styles' );
 function gcta_styles() {
 
-    wp_enqueue_style( 'gcta', plugins_url() . '/genesis-cta-widget/css/gcta-styles.css', array() );
+	if ( !is_admin() ) {
+
+		// GCTA Styles
+		wp_enqueue_style( 'gcta', plugins_url() . '/genesis-cta-widget/css/gcta-styles.css', array() );
+
+		// Bootstrap Modal
+		wp_enqueue_script( 'bootstrap-modal', plugins_url() . '/genesis-cta-widget/js/bootstrap.min.js', array( 'jquery' ) );
+
+	}
 
 } // renaromano_global_styles()
