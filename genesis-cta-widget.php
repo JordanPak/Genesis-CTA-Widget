@@ -214,6 +214,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 		$instance['button_newtab']	= strip_tags( $new_instance['button_newtab']);
 
 		// Video
+		$instance['video_in_modal']	= strip_tags( $new_instance['video_in_modal'] );
 		$instance['video_float']	= strip_tags( $new_instance['video_float'] );
 		$instance['video_width']	= strip_tags( $new_instance['video_width'] );
 		$instance['video_height']	= strip_tags( $new_instance['video_height'] );
@@ -243,6 +244,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         $button_url = '';
 		$button_newtab = '';
 
+		$video_in_modal = '';
 		$video_float = '';
 		$video_width = '';
 		$video_height = '';
@@ -267,6 +269,7 @@ class Genesis_CTA_Widget extends WP_Widget {
             $button_url     = esc_url( $instance['button_url'] );
 			$button_newtab	= esc_attr( $instance['button_newtab'] );
 
+			$video_in_modal	= esc_attr( $instance['video_in_modal'] );
 			$video_float	= esc_attr( $instance['video_float'] );
 			$video_width	= esc_attr( $instance['video_width'] );
 			$video_height	= esc_attr( $instance['video_height'] );
@@ -420,6 +423,11 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 		<p>
 			<b>VIDEO EMBED</b>
+		</p>
+
+		<p>
+		    <input class="checkbox" type="checkbox" <?php checked($instance['video_in_modal'], 'on'); ?> id="<?php echo $this->get_field_id('video_in_modal'); ?>" name="<?php echo $this->get_field_name('video_in_modal'); ?>" />
+		    <label for="<?php echo $this->get_field_id('video_in_modal'); ?>">Open Video in Modal</label>
 		</p>
 
 		<p>
