@@ -295,9 +295,9 @@ class Genesis_CTA_Widget extends WP_Widget {
                 <?php
 
                 $text_align_options = array(
-                    "left" => "Left",
-                    "center" => "Center",
-                    "right" => "Right"
+                    "left"		=>	"Left",
+                    "center"	=>	"Center",
+                    "right"		=>	"Right"
                 );
 
                 foreach( $text_align_options as $value=>$label ) {
@@ -328,17 +328,17 @@ class Genesis_CTA_Widget extends WP_Widget {
                 <?php
 
                 $theme_options = array(
-                    "light" => "Light",
-                    "dark" => "Dark",
+                    "light"	=>	"Light",
+                    "dark"	=>	"Dark",
                 );
 
                 foreach( $theme_options as $value=>$label ) {
 
-                    if ( $theme == $value )
+                    if ( $theme == $value ) {
                         echo '<option selected value="' . $value . '">' . $label . '</option>';
-
-                    else
+					} else {
                         echo '<option value="' . $value . '">' . $label . '</option>';
+					}
 
                 } // foreach
 
@@ -369,19 +369,19 @@ class Genesis_CTA_Widget extends WP_Widget {
                 <?php
 
                 $bg_size_options = array(
-					"auto"			=>	"auto",
-                    "contain" 		=>	"contain",
-                    "cover"			=>	"cover",
-					"100%"	=>	"100%"
+					"auto"		=>	"auto",
+                    "contain" 	=>	"contain",
+                    "cover"		=>	"cover",
+					"100%"		=>	"100%"
                 );
 
                 foreach( $bg_size_options as $value=>$label ) {
 
-                    if ( $bg_size == $value )
+                    if ( $bg_size == $value ) {
                         echo '<option selected value="' . $value . '">' . $label . '</option>';
-
-                    else
+					} else {
                         echo '<option value="' . $value . '">' . $label . '</option>';
+					}
 
                 } // foreach
 
@@ -429,18 +429,18 @@ class Genesis_CTA_Widget extends WP_Widget {
 				<?php
 
 				$video_float_options = array(
-					"left" => "Left",
-					"right" => "Right",
-					"none" => "None"
+					"left"	=>	"Left",
+					"right"	=>	"Right",
+					"none"	=>	"None"
 				);
 
 				foreach( $video_float_options as $value=>$label ) {
 
-					if ( $video_float == $value )
+					if ( $video_float == $value ) {
 						echo '<option selected value="' . $value . '">' . $label . '</option>';
-
-					else
+					} else {
 						echo '<option value="' . $value . '">' . $label . '</option>';
+					}
 
 				} // foreach
 
