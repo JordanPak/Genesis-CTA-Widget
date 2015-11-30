@@ -150,6 +150,13 @@ class Genesis_CTA_Widget extends WP_Widget {
             $wrapper_classes .= ' gcta-theme-dark';
 		}
 
+		if ( $instance['title'] == '' ) {
+			$wrapper_classes .= ' gcta-no-title';
+		}
+
+		if ( $instance['body'] == '' ) {
+			$wrapper_classes .= ' gcta-no-body';
+		}
 
         // OUTPUT //
 

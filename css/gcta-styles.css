@@ -29,6 +29,10 @@
     border-bottom: 2px solid #e5554e;
 }
 
+.gcta-wrap.gcta-no-body .widget-title {
+	margin-bottom: 40px;
+}
+
 .gcta-wrap .gcta-body {
     font-weight: normal;
     font-weight: 300;
@@ -42,6 +46,7 @@
     font-weight: 700;
     font-size: .8em;
 }
+
 
 .gcta-wrap .gcta-button {
     display: inline-block;
