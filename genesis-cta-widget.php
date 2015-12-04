@@ -119,26 +119,76 @@ class Genesis_CTA_Widget extends WP_Widget {
 				$video_height = '224';
 			}
 
+			// NON-MODAL option
+			if ( $instance['video_in_modal'] == false ) {
 
-			// Set Classes
-			$video_classes = 'gcta-video';
+				// Set Classes
+				$video_classes = 'gcta-video';
 
-			if ( $video_float ) {
-				$video_classes .= ' gcta-video-' . $video_float;
-			}
+				if ( $video_float ) {
+					$video_classes .= ' gcta-video-' . $video_float;
+				}
 
 
-			// Output Video Embed
-			$video .= '<div class="' . $video_classes .'">';
+				// Output Video Embed
+				$video .= '<div class="' . $video_classes .'">';
 
-				// YouTube
-				if ( $instance['youtube_id'] ) {
+					// YouTube
+					if ( $instance['youtube_id'] ) {
 
-					$video .= '<iframe width="'. $video_width . '" height="' . $video_height . '" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+						$video .= '<iframe width="'. $video_width . '" height="' . $video_height . '" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 
-				} // if youtube_id
+					} // if youtube_id
 
-			$video .= '</div>';
+				$video .= '</div>';
+
+			} // If no modal
+
+
+			// Video in Modal - Embed!
+			else {
+
+				$video .= '<div class="modal fade" id="gcta-modal" tabindex="-1" role="dialog" aria-labelledby="gcta-modal-label">';
+
+					$video .= '<div class="modal-dialog" role="document">';
+
+						$video .= '<div class="modal-content">';
+
+							// Close Button
+							$video .= '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+
+							// Body
+							$video .= '<div class="modal-body">';
+
+								// iframe embed
+								$video .= '<iframe width="' . $video_width . '" height="' . $video_height . '" src="https://www.youtube.com/embed/' . $youtube_id . '?rel=0&amp;controls=0" frameborder="0"></iframe>';
+
+							$video .= '</div>'; // .modal-body
+
+							// Footer w/ Button(s)
+							$video .= '<div class="modal-footer">';
+
+								// Button
+								if ( $instance['modal_button_text'] ) {
+
+									$video .= '<button href="' . $instance['modal_button_url'] . '" type="button" class="button">';
+
+										// Button Icon
+										if ( $instance['modal_button_icon'] ) {
+											$video .= '<i class="fa fa-' . $instance['modal_button_icon'] . '"></i> &nbsp; ';
+										}
+
+									$video .= $instance['modal_button_text'] . '</button>';
+
+								} // If Modal Button Text
+
+							$video .= '</div>'; // .modal-footer
+
+						$video .= '</div>'; // .modal-content
+					$video .= '</div>'; // .modal-dialog
+				$video .= '</div>'; // .modal#gcta-modal
+
+			} // else: Video in Modal
 
 		} // if there's ANY embed
 
