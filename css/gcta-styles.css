@@ -16,6 +16,12 @@
     margin: auto;
 }
 
+/*-- MODAL CUSTOMIZATIONS --*/
+.modal-dialog {
+	width: auto;
+	max-width: 80%;
+}
+
 
 /*-- WRAPPER --*/
 .gcta-wrap {
