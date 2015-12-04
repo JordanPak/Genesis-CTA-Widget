@@ -33,8 +33,10 @@ button.close {
 	right: -18px;
 	z-index: 500;
 	padding: 7px 16px;
-	border-radius: 9999px;
+	color: #333333;
 	font-weight: 700;
+	background: #FFFFFF;
+	border-radius: 9999px;
 	-moz-box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 	box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
@@ -43,10 +45,26 @@ button.close {
 	display: block;
 	width: 100%;
 	position: absolute;
-	margin-top: -26px;
+	margin-top: -33px;
 	border: 0;
 	padding: 0;
 	text-align: center;
+}
+
+.button {
+	padding: 16px 30px;
+	font-size: 22px;
+	font-weight: 700;
+	word-spacing: 4px;
+	color: #333333;
+	-moz-box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+	box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+	background: #FFFFFF;
+	border-bottom: 2px solid #D4D4D4;
+}
+
+.button:hover {
+	border-bottom-color: #7D1F1A;
 }
 
 
