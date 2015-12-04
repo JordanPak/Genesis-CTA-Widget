@@ -52,6 +52,7 @@ button.close {
 }
 
 .button {
+	margin-bottom: 14px;
 	padding: 16px 30px;
 	font-size: 22px;
 	font-weight: 700;
