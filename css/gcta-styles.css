@@ -24,6 +24,7 @@
 
 .modal-body {
 	padding: 0;
+	font-size: 0;
 }
 
 button.close {
@@ -36,6 +37,16 @@ button.close {
 	font-weight: 700;
 	-moz-box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 	box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.modal-footer {
+	display: block;
+	width: 100%;
+	position: absolute;
+	margin-top: -26px;
+	border: 0;
+	padding: 0;
+	text-align: center;
 }
 
 
