@@ -246,29 +246,32 @@ class Genesis_CTA_Widget extends WP_Widget {
 		//-- FIELDS --//
 
         // Text
-        $instance['title']          = $new_instance['title'];
-        $instance['body']           = $new_instance['body'];
-        $instance['text_align']     = strip_tags( $new_instance['text_align'] );
+        $instance['title']				= $new_instance['title'];
+        $instance['body']				= $new_instance['body'];
+        $instance['text_align']			= strip_tags( $new_instance['text_align'] );
 
         // Background
-        $instance['theme']          = strip_tags( $new_instance['theme'] );
-        $instance['bg_url']         = strip_tags( $new_instance['bg_url'] );
-        $instance['bg_color']       = strip_tags( $new_instance['bg_color'] );
-        $instance['bg_position']    = strip_tags( $new_instance['bg_position'] );
-		$instance['bg_size']		= strip_tags( $new_instance['bg_size'] );
+        $instance['theme']          	= strip_tags( $new_instance['theme'] );
+        $instance['bg_url']         	= strip_tags( $new_instance['bg_url'] );
+        $instance['bg_color']       	= strip_tags( $new_instance['bg_color'] );
+        $instance['bg_position']    	= strip_tags( $new_instance['bg_position'] );
+		$instance['bg_size']			= strip_tags( $new_instance['bg_size'] );
 
         // Button
-        $instance['button_text']    = strip_tags( $new_instance['button_text'] );
-        $instance['button_icon']    = strip_tags( $new_instance['button_icon'] );
-        $instance['button_url']     = strip_tags( $new_instance['button_url'] );
-		$instance['button_newtab']	= strip_tags( $new_instance['button_newtab']);
+        $instance['button_text']    	= strip_tags( $new_instance['button_text'] );
+        $instance['button_icon']    	= strip_tags( $new_instance['button_icon'] );
+        $instance['button_url']     	= strip_tags( $new_instance['button_url'] );
+		$instance['button_newtab']		= strip_tags( $new_instance['button_newtab']);
 
 		// Video
-		$instance['video_in_modal']	= strip_tags( $new_instance['video_in_modal'] );
-		$instance['video_float']	= strip_tags( $new_instance['video_float'] );
-		$instance['video_width']	= strip_tags( $new_instance['video_width'] );
-		$instance['video_height']	= strip_tags( $new_instance['video_height'] );
-		$instance['youtube_id']		= strip_tags( $new_instance['youtube_id'] );
+		$instance['video_in_modal']		= strip_tags( $new_instance['video_in_modal'] );
+		$instance['modal_button_text']	= strip_tags( $new_instance['modal_button_text'] );
+		$instance['modal_button_url']	= strip_tags( $new_instance['modal_button_url'] );
+		$instance['modal_button_icon']	= strip_tags( $new_instance['modal_button_icon'] );
+		$instance['video_float']		= strip_tags( $new_instance['video_float'] );
+		$instance['video_width']		= strip_tags( $new_instance['video_width'] );
+		$instance['video_height']		= strip_tags( $new_instance['video_height'] );
+		$instance['youtube_id']			= strip_tags( $new_instance['youtube_id'] );
 
         return $instance;
 
@@ -295,6 +298,9 @@ class Genesis_CTA_Widget extends WP_Widget {
 		$button_newtab = '';
 
 		$video_in_modal = '';
+		$modal_button_text = '';
+		$modal_button_url = '';
+		$modal_button_icon = '';
 		$video_float = '';
 		$video_width = '';
 		$video_height = '';
@@ -304,26 +310,29 @@ class Genesis_CTA_Widget extends WP_Widget {
 		// Check values
 		if( $instance ) {
 
-            $title          = esc_html( $instance['title'] );
-            $body           = esc_html( $instance['body'] );
-            $text_align     = esc_attr( $instance['text_align'] );
+            $title          	= esc_html( $instance['title'] );
+            $body           	= esc_html( $instance['body'] );
+            $text_align     	= esc_attr( $instance['text_align'] );
 
-            $theme          = esc_attr( $instance['theme'] );
-            $bg_url         = esc_url( $instance['bg_url'] );
-            $bg_color       = esc_attr( $instance['bg_color'] );
-            $bg_position    = esc_attr( $instance['bg_position'] );
-			$bg_size		= esc_attr( $instance['bg_size'] );
+            $theme          	= esc_attr( $instance['theme'] );
+            $bg_url         	= esc_url( $instance['bg_url'] );
+            $bg_color       	= esc_attr( $instance['bg_color'] );
+            $bg_position    	= esc_attr( $instance['bg_position'] );
+			$bg_size			= esc_attr( $instance['bg_size'] );
 
-            $button_text    = esc_attr( $instance['button_text'] );
-            $button_icon    = esc_attr( $instance['button_icon'] );
-            $button_url     = esc_url( $instance['button_url'] );
-			$button_newtab	= esc_attr( $instance['button_newtab'] );
+            $button_text    	= esc_attr( $instance['button_text'] );
+            $button_icon    	= esc_attr( $instance['button_icon'] );
+            $button_url     	= esc_url( $instance['button_url'] );
+			$button_newtab		= esc_attr( $instance['button_newtab'] );
 
-			$video_in_modal	= esc_attr( $instance['video_in_modal'] );
-			$video_float	= esc_attr( $instance['video_float'] );
-			$video_width	= esc_attr( $instance['video_width'] );
-			$video_height	= esc_attr( $instance['video_height'] );
-			$youtube_id		= esc_attr( $instance['youtube_id'] );
+			$video_in_modal		= esc_attr( $instance['video_in_modal'] );
+			$modal_button_text 	= esc_attr( $instance['modal_button_text'] );
+			$modal_button_url 	= esc_url( $instance['modal_button_url'] );
+			$modal_button_icon 	= esc_attr( $instance['modal_button_icon'] );
+			$video_float		= esc_attr( $instance['video_float'] );
+			$video_width		= esc_attr( $instance['video_width'] );
+			$video_height		= esc_attr( $instance['video_height'] );
+			$youtube_id			= esc_attr( $instance['youtube_id'] );
 
 		} ?>
 
@@ -479,6 +488,21 @@ class Genesis_CTA_Widget extends WP_Widget {
 		    <input class="checkbox" type="checkbox" <?php checked($instance['video_in_modal'], 'on'); ?> id="<?php echo $this->get_field_id('video_in_modal'); ?>" name="<?php echo $this->get_field_name('video_in_modal'); ?>" />
 		    <label for="<?php echo $this->get_field_id('video_in_modal'); ?>">Open Video in Modal</label>
 		</p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('modal_button_text'); ?>"><?php _e('Modal Button Text', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_text'); ?>" name="<?php echo $this->get_field_name('modal_button_text'); ?>" type="text" value="<?php echo $modal_button_text; ?>" />
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('modal_button_url'); ?>"><?php _e('Modal Button URL', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_url'); ?>" name="<?php echo $this->get_field_name('modal_button_url'); ?>" type="text" value="<?php echo $modal_button_url; ?>" />
+        </p>
+
+		<p>
+            <label for="<?php echo $this->get_field_id('modal_button_icon'); ?>"><?php _e('Modal Button Icon (<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_BLANK">FontAwesome</a> class suffix. Ex: "book")', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_icon'); ?>" name="<?php echo $this->get_field_name('modal_button_icon'); ?>" type="text" value="<?php echo $modal_button_icon; ?>" />
+        </p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id('video_float'); ?>"><?php _e('Video Embed Float', 'wp_widget_plugin'); ?></label>
