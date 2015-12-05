@@ -493,7 +493,7 @@ class Genesis_CTA_Widget extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id('button_url'); ?>"><?php _e('Button URL', 'wp_widget_plugin'); ?></label>
+            <label for="<?php echo $this->get_field_id('button_url'); ?>"><?php _e('Button URL (Will be overridden if "Open Video In Modal" is checked.)', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('button_url'); ?>" name="<?php echo $this->get_field_name('button_url'); ?>" type="text" value="<?php echo $button_url; ?>" />
         </p>
 
