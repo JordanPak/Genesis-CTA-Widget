@@ -51,7 +51,7 @@ button.close {
 	text-align: center;
 }
 
-.button {
+.modal-footer .button {
 	margin-bottom: 14px;
 	padding: 16px 30px;
 	font-size: 22px;
@@ -64,7 +64,9 @@ button.close {
 	border-bottom: 2px solid #D4D4D4;
 }
 
-.button:hover {
+.modal-footer .button:hover {
+	background: #C3251D;
+	color: #FFFFFF;
 	border-bottom-color: #7D1F1A;
 }
 

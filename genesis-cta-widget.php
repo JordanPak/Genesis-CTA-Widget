@@ -74,27 +74,51 @@ class Genesis_CTA_Widget extends WP_Widget {
 	        // Button
 	        $button = '';
 
-			if ( $instance['button_newtab'] == true ) {
-				$button_target = 'target="_BLANK"';
-			}
+			// Non-Modal Button
+			if ( $instance['video_in_modal'] == false ) {
 
-			else {
-				$button_target = '';
-			}
-
-			// Start Button
-	        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
-
-				// Config Icon
-		        if ( $instance['button_icon'] != '' ) {
-		            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+				if ( $instance['button_newtab'] == true ) {
+					$button_target = 'target="_BLANK"';
 				}
 
-				// Set Text
-				$button .= $instance['button_text'];
+				else {
+					$button_target = '';
+				}
 
-			// Close Button
-	        $button .= '</a>';
+				// Start Button
+		        $button .= '<a class="gcta-button" ' . $button_target . ' href="' . esc_url($instance['button_url']) . '">';
+
+					// Config Icon
+			        if ( $instance['button_icon'] != '' ) {
+			            $button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+					}
+
+					// Set Text
+					$button .= $instance['button_text'];
+
+				// Close Button
+		        $button .= '</a>';
+
+			} // If non-modal button (regular)
+
+
+			// Modal Button
+			else {
+
+				// Start Button
+				$button .= '<button type="button" class="button gcta-button gcta-open-modal-button" data-toggle="modal" data-target="#gcta-modal">';
+
+					// Config Icon
+					if ( $instance['button_icon'] != '' ) {
+						$button .= '<i class="fa fa-lg fa-' . $instance['button_icon'] . '"></i>&nbsp;&nbsp;&nbsp;';
+					}
+
+				// Button Text & Close
+				$button .= $instance['button_text'] . '</button>';
+
+			} // else: Modal Button
+
+
 
 		} // if button_text
 
