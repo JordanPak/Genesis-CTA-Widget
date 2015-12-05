@@ -10,5 +10,10 @@ function gctaYTmodal() {
 		jQuery(theModal).click(function () {
 			jQuery(theModal + ' iframe').attr('src', videoSRC);
 		});
+		jQuery(document).keyup(function(e) {
+			if (e.keyCode == 27) { // Escape key
+				jQuery(theModal + ' iframe').attr('src', videoSRC);
+			}
+		})
 	});
 }
