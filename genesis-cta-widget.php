@@ -185,7 +185,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 							$video .= '<div class="modal-body">';
 
 								// iframe embed
-								$video .= '<iframe width="' . $video_width . '" height="' . $video_height . '" src="https://www.youtube.com/embed/' . $youtube_id . '?rel=0&amp;controls=0" frameborder="0"></iframe>';
+								$video .= '<iframe width="' . $video_width . '" height="' . $video_height . '" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0" frameborder="0"></iframe>';
 
 							$video .= '</div>'; // .modal-body
 
