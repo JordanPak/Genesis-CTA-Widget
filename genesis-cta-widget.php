@@ -106,7 +106,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 			else {
 
 				// Start Button
-				$button .= '<button type="button" class="button gcta-button gcta-open-modal-button" data-toggle="modal" data-target="#gcta-modal">';
+				$button .= '<button type="button" class="button gcta-button gcta-open-modal-button" data-toggle="modal" data-target="#gcta-modal" data-youtubeID="' . $instance['youtube_id'] . '">';
 
 					// Config Icon
 					if ( $instance['button_icon'] != '' ) {
@@ -115,6 +115,9 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 				// Button Text & Close
 				$button .= $instance['button_text'] . '</button>';
+
+				// Add Modal Script
+				$button .= '<script>gctaYTmodal();</script>';
 
 			} // else: Modal Button
 
@@ -172,20 +175,20 @@ class Genesis_CTA_Widget extends WP_Widget {
 			// Video in Modal - Embed!
 			else {
 
-				$video .= '<div class="modal fade" id="gcta-modal" tabindex="-1" role="dialog" aria-labelledby="gcta-modal-label">';
+				$video .= '<div class="modal fade" id="gcta-modal" tabindex="-1" role="dialog" aria-labelledby="gcta-modal-label" area-hidden="true">';
 
 					$video .= '<div class="modal-dialog" role="document">';
 
 						$video .= '<div class="modal-content">';
 
 							// Close Button
-							$video .= '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+							$video .= '<button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 
 							// Body
 							$video .= '<div class="modal-body">';
 
 								// iframe embed
-								$video .= '<iframe width="' . $video_width . '" height="' . $video_height . '" src="https://www.youtube-nocookie.com/embed/' . $instance['youtube_id'] . '?rel=0&amp;controls=0" frameborder="0"></iframe>';
+								$video .= '<div class="modal-video"><iframe width="' . $video_width . '" height="' . $video_height . '" src="" frameborder="0"></iframe></div>';
 
 							$video .= '</div>'; // .modal-body
 
@@ -195,14 +198,14 @@ class Genesis_CTA_Widget extends WP_Widget {
 								// Button
 								if ( $instance['modal_button_text'] ) {
 
-									$video .= '<button href="' . $instance['modal_button_url'] . '" type="button" class="button">';
+									$video .= '<a href="' . $instance['modal_button_url'] . '" class="button">';
 
 										// Button Icon
 										if ( $instance['modal_button_icon'] ) {
 											$video .= '<i class="fa fa-' . $instance['modal_button_icon'] . '"></i> &nbsp; ';
 										}
 
-									$video .= $instance['modal_button_text'] . '</button>';
+									$video .= $instance['modal_button_text'] . '</a>';
 
 								} // If Modal Button Text
 
@@ -240,6 +243,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 
 			if ( $video ) {
 				echo $video;
+
 			}
 
 			if ( $instance['title'] ) {
@@ -588,6 +592,9 @@ function gcta_styles() {
 
 		// Bootstrap Modal
 		wp_enqueue_script( 'bootstrap-modal', plugins_url() . '/genesis-cta-widget/js/bootstrap.min.js', array( 'jquery' ) );
+
+		// YouTube Modal
+		wp_enqueue_script( 'yt-modal', plugins_url() . '/genesis-cta-widget/js/yt-embed.js', array( 'jquery') );
 
 	}
 
