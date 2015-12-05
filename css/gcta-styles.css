@@ -183,6 +183,20 @@ button.close {
 
 }
 
+@media only screen and (max-width: 740px) {
+
+	button.close {
+		padding: 3px 12px;
+	}
+
+	.modal-footer .button {
+		top: 10px;
+		padding: 10px 22px;
+		font-size: 18px;
+	}
+
+}
+
 @media only screen and (max-width: 500px) {
 
     .gcta-wrap {
@@ -202,4 +216,4 @@ button.close {
         text-align: center;
     }
 
-}
+} /* max-width 500px */
