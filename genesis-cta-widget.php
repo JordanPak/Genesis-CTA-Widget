@@ -175,9 +175,16 @@ class Genesis_CTA_Widget extends WP_Widget {
 			// Video in Modal - Embed!
 			else {
 
+				// Fix Video Width
+				if ( strpos( $video_width, "%" ) ) {
+					$video_width = "640px";
+				} else if ( strpos( $video_width, "px" ) == false ) {
+					$video_width .= 'px';
+				}
+
 				$video .= '<div class="modal fade" id="gcta-modal" tabindex="-1" role="dialog" aria-labelledby="gcta-modal-label" area-hidden="true">';
 
-					$video .= '<div class="modal-dialog" role="document">';
+					$video .= '<div class="modal-dialog" role="document" style="width: ' . $video_width . ';">';
 
 						$video .= '<div class="modal-content">';
 
@@ -188,7 +195,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 							$video .= '<div class="modal-body">';
 
 								// iframe embed
-								$video .= '<div class="modal-video"><iframe width="' . $video_width . '" height="' . $video_height . '" src="" frameborder="0"></iframe></div>';
+								$video .= '<div class="modal-video"><iframe width="100%" height="' . $video_height . '" src="" frameborder="0"></iframe></div>';
 
 							$video .= '</div>'; // .modal-body
 
@@ -513,23 +520,18 @@ class Genesis_CTA_Widget extends WP_Widget {
 		</p>
 
 		<p>
-		    <input class="checkbox" type="checkbox" <?php checked($instance['video_in_modal'], 'on'); ?> id="<?php echo $this->get_field_id('video_in_modal'); ?>" name="<?php echo $this->get_field_name('video_in_modal'); ?>" />
-		    <label for="<?php echo $this->get_field_id('video_in_modal'); ?>">Open Video in Modal</label>
-		</p>
-
-		<p>
-            <label for="<?php echo $this->get_field_id('modal_button_text'); ?>"><?php _e('Modal Button Text', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_text'); ?>" name="<?php echo $this->get_field_name('modal_button_text'); ?>" type="text" value="<?php echo $modal_button_text; ?>" />
+            <label for="<?php echo $this->get_field_id('youtube_id'); ?>"><?php _e('YouTube Video ID', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" type="text" value="<?php echo $youtube_id; ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('modal_button_url'); ?>"><?php _e('Modal Button URL', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_url'); ?>" name="<?php echo $this->get_field_name('modal_button_url'); ?>" type="text" value="<?php echo $modal_button_url; ?>" />
+            <label for="<?php echo $this->get_field_id('video_width'); ?>"><?php _e('Video Embed Width (Use pixel value if modal)', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('video_width'); ?>" name="<?php echo $this->get_field_name('video_width'); ?>" type="text" value="<?php echo $video_width; ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('modal_button_icon'); ?>"><?php _e('Modal Button Icon (<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_BLANK">FontAwesome</a> class suffix. Ex: "book")', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_icon'); ?>" name="<?php echo $this->get_field_name('modal_button_icon'); ?>" type="text" value="<?php echo $modal_button_icon; ?>" />
+            <label for="<?php echo $this->get_field_id('video_height'); ?>"><?php _e('Video Embed Height (Ignore if modal)', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('video_height'); ?>" name="<?php echo $this->get_field_name('video_height'); ?>" type="text" value="<?php echo $video_height; ?>" />
         </p>
 
 		<p>
@@ -559,19 +561,24 @@ class Genesis_CTA_Widget extends WP_Widget {
 			</select>
 		</p>
 
+		<p style="margin-top: 30px;">
+		    <input class="checkbox" type="checkbox" <?php checked($instance['video_in_modal'], 'on'); ?> id="<?php echo $this->get_field_id('video_in_modal'); ?>" name="<?php echo $this->get_field_name('video_in_modal'); ?>" />
+		    <label for="<?php echo $this->get_field_id('video_in_modal'); ?>">Open Video in Modal</label>
+		</p>
+
 		<p>
-            <label for="<?php echo $this->get_field_id('video_width'); ?>"><?php _e('Video Embed Width', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('video_width'); ?>" name="<?php echo $this->get_field_name('video_width'); ?>" type="text" value="<?php echo $video_width; ?>" />
+            <label for="<?php echo $this->get_field_id('modal_button_text'); ?>"><?php _e('Modal Button Text', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_text'); ?>" name="<?php echo $this->get_field_name('modal_button_text'); ?>" type="text" value="<?php echo $modal_button_text; ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('video_height'); ?>"><?php _e('Video Embed Height', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('video_height'); ?>" name="<?php echo $this->get_field_name('video_height'); ?>" type="text" value="<?php echo $video_height; ?>" />
+            <label for="<?php echo $this->get_field_id('modal_button_url'); ?>"><?php _e('Modal Button URL', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_url'); ?>" name="<?php echo $this->get_field_name('modal_button_url'); ?>" type="text" value="<?php echo $modal_button_url; ?>" />
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_id('youtube_id'); ?>"><?php _e('YouTube Video ID', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" type="text" value="<?php echo $youtube_id; ?>" />
+            <label for="<?php echo $this->get_field_id('modal_button_icon'); ?>"><?php _e('Modal Button Icon (<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_BLANK">FontAwesome</a> class suffix. Ex: "book")', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('modal_button_icon'); ?>" name="<?php echo $this->get_field_name('modal_button_icon'); ?>" type="text" value="<?php echo $modal_button_icon; ?>" />
         </p>
 
 	<?php }
