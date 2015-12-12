@@ -308,6 +308,9 @@ class Genesis_CTA_Widget extends WP_Widget {
 		$instance['video_height']		= strip_tags( $new_instance['video_height'] );
 		$instance['youtube_id']			= strip_tags( $new_instance['youtube_id'] );
 
+		// Custom CSS Class
+		$instance['custom_css_class']	= strip_tags( $new_instance['custom_css_class'] );
+
         return $instance;
 
 	} // update()
@@ -341,6 +344,8 @@ class Genesis_CTA_Widget extends WP_Widget {
 		$video_height = '';
 		$youtube_id = '';
 
+		$custom_css_class = '';
+
 
 		// Check values
 		if( $instance ) {
@@ -368,6 +373,8 @@ class Genesis_CTA_Widget extends WP_Widget {
 			$video_width		= esc_attr( $instance['video_width'] );
 			$video_height		= esc_attr( $instance['video_height'] );
 			$youtube_id			= esc_attr( $instance['youtube_id'] );
+
+			$custom_css_class	= esc_attr( $instance['custom_css_class'] );
 
 		} ?>
 
@@ -580,6 +587,17 @@ class Genesis_CTA_Widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id('modal_button_icon'); ?>"><?php _e('Modal Button Icon (<a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_BLANK">FontAwesome</a> class suffix. Ex: "book")', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('modal_button_icon'); ?>" name="<?php echo $this->get_field_name('modal_button_icon'); ?>" type="text" value="<?php echo $modal_button_icon; ?>" />
         </p>
+
+		<br>
+
+		<p>
+			<b>Custom CSS</b>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('custom_css_class'); ?>"><?php _e('Custom CSS Class', 'wp_widget_plugin'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('custom_css_class'); ?>" name="<?php echo $this->get_field_name('custom_css_class'); ?>" type="text" value="<?php echo $custom_css_class; ?>" />
+		</p>
 
 	<?php }
 
