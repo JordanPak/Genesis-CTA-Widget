@@ -230,17 +230,24 @@ class Genesis_CTA_Widget extends WP_Widget {
         $wrapper_classes = '';
         $wrapper_classes .= 'widget gcta-wrap';
 
+		// Dark Theme
         if ( $instance['theme'] == 'dark' ) {
             $wrapper_classes .= ' gcta-theme-dark';
 		}
 
+		// Missing Elements
 		if ( $instance['title'] == '' ) {
 			$wrapper_classes .= ' gcta-no-title';
 		}
-
 		if ( $instance['body'] == '' ) {
 			$wrapper_classes .= ' gcta-no-body';
 		}
+
+		// Custom CSS
+		if ( $instance['custom_css_class'] ) {
+			$wrapper_classes .= ' ' . $instance['custom_css_class'];
+		}
+
 
         // OUTPUT //
 
