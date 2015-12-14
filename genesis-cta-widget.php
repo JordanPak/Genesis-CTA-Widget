@@ -268,7 +268,7 @@ class Genesis_CTA_Widget extends WP_Widget {
 				echo '<p class="gcta-body">' . $instance['body'] . '</p>';
 			}
 
-			if ( $instance['button'] !== '' ) {
+			if ( $instance['button_text'] !== '' ) {
             	echo $button;
 			}
 
